@@ -9,6 +9,47 @@
             <input type="submit" class="btn btn-success" value="Add">
         </form>
     </div>
+        <div class="col-sm-7 offset-1">
+            <h3 class="text-center alert alert-warning">Tasks For The Day</h3>
+            {% if info %}
+            <table class="table table-dark table-borderless">
+                <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Task</th>
+                      <th scope="col">Created Time</th>
+                      <th scope="col">Action</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for infos in info %}
+                        
+                      
+                            <tr>
+                                <th scope="row">{{infos.id}}</th>
+                                <td>{{infos.task_name}}</td>
+                                <td>{{infos.created}}</td>
+                                <td><a href="{% url 'update' infos.id %}" class="btn btn-success">Edit</a>
+                                <form action="{% url 'delete' infos.id %}"  method="POST" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-danger" value="Done">
+                                </form>
+                                </td>
+                                
+                                
+                               
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                {% else %}
+                    <h2>No records Found</h2>  
+                {% endif %}
+              </table>
+    </div>
  
- </div>
+    </div>
+
+
 {% endblock content %}
+

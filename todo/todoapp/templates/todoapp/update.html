@@ -1,0 +1,14 @@
+{% extends "todoapp/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-7">
+        <h2 class="alert alert-info">Update</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{forma.as_p}}
+            <input type="submit" class="btn btn-success" value="Update">
+            <a href="{% url 'addanddisplay' %}" class="btn btn-danger" >Back to Home</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}
